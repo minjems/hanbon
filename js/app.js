@@ -341,11 +341,7 @@ function initChatbot() {
         ttsBtn.className = 'chat-action-btn';
         ttsBtn.textContent = '🔊 듣기';
         ttsBtn.onclick = () => {
-            if (!window.speechSynthesis) return;
-            window.speechSynthesis.cancel();
-            const u = new SpeechSynthesisUtterance(result);
-            u.lang = getLangCode(langKey);
-            window.speechSynthesis.speak(u);
+            speakFemale(result, getLangCode(langKey));
         };
 
         div.appendChild(copyBtn);
