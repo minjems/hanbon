@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외국어 TTS 변환기 - 한국어를 외국어 발음으로</title>
+    <meta name="description" content="한국어를 일본어, 중국어, 영어 등 12개 언어 발음으로 변환합니다.">
+    <meta name="keywords" content="한국어 발음 변환, Korean pronunciation, 일본어 변환, 중국어 변환, 영어 발음, 외국어 TTS, 외국어 발음">
+    <meta name="author" content="hanbon">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="외국어 TTS 변환기 - 한국어를 외국어 발음으로">
+    <meta property="og:description" content="한국어를 일본어, 중국어, 영어 등 12개 언어 발음으로 변환합니다. 무료 온라인 도구.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hanbon.vercel.app/">
+    <meta property="og:locale" content="ko_KR">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="외국어 TTS 변환기">
+    <meta name="twitter:description" content="한국어를 12개 언어 발음으로 변환하는 무료 도구">
+
+    <link rel="canonical" href="https://hanbon.vercel.app/">
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-9619876871892528">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9619876871892528"
+         crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+</head>
+<body>
+    <!-- Main Converter (centered, original size) -->
+    <div class="card">
+        <header class="header">
+            <h1>외국어 TTS 변환기</h1>
+            <p>한국어를 외국어 발음으로 변환합니다</p>
+        </header>
+
+        <div class="textarea-wrap">
+            <textarea id="input" placeholder="변환할 문장을 입력하세요" autofocus></textarea>
+        </div>
+
+        <div class="main-langs">
+            <button class="main-lang-btn active" data-lang="japanese">
+                <span class="flag">🇯🇵</span>
+                <span class="label">일본어</span>
+            </button>
+            <button class="main-lang-btn" data-lang="chinese">
+                <span class="flag">🇨🇳</span>
+                <span class="label">중국어</span>
+            </button>
+            <button class="main-lang-btn" data-lang="english">
+                <span class="flag">🇺🇸</span>
+                <span class="label">영어</span>
+            </button>
+        </div>
+
+        <div class="textarea-wrap">
+            <textarea id="output" placeholder="변환 결과" readonly></textarea>
+        </div>
+
+        <div class="actions">
+            <button class="action-btn" id="copy-btn">📋 복사</button>
+            <button class="action-btn" id="tts-btn">🔊 듣기</button>
+            <div class="spacer"></div>
+            <button class="theme-btn" id="theme-btn" title="다크 모드">🌙</button>
+        </div>
+
+        <div class="hints">
+            <p>* 음성이 이상한 경우 구글 번역에서 들어보세요</p>
+            <p class="hint-chinese" id="hint-chinese">* 중국어는 소리나는대로 입력해주세요 (예: 심심해 → 심시매)</p>
+        </div>
+    </div>
+
+    <!-- Chatbot (right margin) -->
+    <div class="chatbot-panel" id="chatbot-panel">
+        <div class="chatbot-header">
+            <span>💬 다른 언어로 변환</span>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <div class="chatbot-input-wrap">
+            <input type="text" class="chatbot-input" id="chatbot-input" placeholder="언어 입력 (예: 독일어)" />
+            <button class="chatbot-send" id="chatbot-send">→</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

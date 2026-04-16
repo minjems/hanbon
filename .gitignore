@@ -1,0 +1,7 @@
+*.png
+RESEARCH.md
+CLAUDE.md
+assets/
+.DS_Store
+Thumbs.db
+.vercel

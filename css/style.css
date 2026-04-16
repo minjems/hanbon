@@ -1,0 +1,538 @@
+/* === Theme Variables === */
+:root {
+    /* Warm cream-to-stone gradient background */
+    --bg-from: #F5F1EB;
+    --bg-to: #E8E2D9;
+
+    /* Card stands out on warm background */
+    --card-bg: #FFFFFF;
+    --card-border: #D5CFC6;
+    --card-shadow-1: rgba(0, 0, 0, 0.05);
+    --card-shadow-2: rgba(0, 0, 0, 0.08);
+
+    /* Warm text colors */
+    --text-primary: #2D2A26;
+    --text-secondary: #6B6560;
+
+    /* Input - white to stand out on card */
+    --input-bg: #FFFFFF;
+    --input-border: #CCC6BC;
+    --input-focus: #3B82F6;
+    --input-focus-ring: rgba(59, 130, 246, 0.15);
+
+    /* Output - slightly tinted to distinguish from input */
+    --output-bg: #FAF8F5;
+
+    /* Language buttons */
+    --btn-bg: #F0ECE6;
+    --btn-text: #4A4540;
+    --btn-border: #D5CFC6;
+    --btn-hover-bg: #E5E0D8;
+    --btn-active-bg: #3B82F6;
+    --btn-active-text: #FFFFFF;
+    --btn-active-shadow: rgba(59, 130, 246, 0.3);
+
+    /* Action buttons */
+    --action-text: #6B6560;
+    --action-border: #D5CFC6;
+    --action-hover-bg: #F0ECE6;
+    --action-hover-border: #3B82F6;
+
+    /* Utility */
+    --hint-text: #9B9590;
+    --divider: #E5E0D8;
+    --toast-bg: #2D2A26;
+    --toast-text: #FAF8F5;
+}
+
+[data-theme="dark"] {
+    --bg-from: #1A1A1E;
+    --bg-to: #12121A;
+
+    --card-bg: #242428;
+    --card-border: #3A3A40;
+    --card-shadow-1: rgba(0, 0, 0, 0.2);
+    --card-shadow-2: rgba(0, 0, 0, 0.3);
+
+    --text-primary: #EAEAE8;
+    --text-secondary: #9A9A98;
+
+    --input-bg: #1E1E22;
+    --input-border: #3A3A40;
+    --input-focus: #60A5FA;
+    --input-focus-ring: rgba(96, 165, 250, 0.2);
+
+    --output-bg: #1A1A1E;
+
+    --btn-bg: #2E2E34;
+    --btn-text: #C0C0BE;
+    --btn-border: #44444A;
+    --btn-hover-bg: #3A3A40;
+    --btn-active-bg: #3B82F6;
+    --btn-active-text: #FFFFFF;
+    --btn-active-shadow: rgba(59, 130, 246, 0.35);
+
+    --action-text: #9A9A98;
+    --action-border: #3A3A40;
+    --action-hover-bg: #2E2E34;
+    --action-hover-border: #60A5FA;
+
+    --hint-text: #6A6A68;
+    --divider: #2E2E34;
+    --toast-bg: #EAEAE8;
+    --toast-text: #1A1A1E;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--bg-from), var(--bg-to));
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1rem;
+    transition: background 0.4s;
+}
+
+/* === Card (centered, original size) === */
+.card {
+    width: 100%;
+    max-width: 580px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow:
+        0 1px 2px var(--card-shadow-1),
+        0 8px 24px var(--card-shadow-2);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+/* === Header === */
+.header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--divider);
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 800;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.3px;
+}
+
+.header p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* === Textareas === */
+.textarea-wrap {
+    margin-bottom: 1rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 1rem 1.1rem;
+    border: 1.5px solid var(--input-border);
+    border-radius: 10px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+    border-color: var(--input-focus);
+    box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+textarea::placeholder {
+    color: var(--hint-text);
+}
+
+textarea[readonly] {
+    cursor: default;
+    background: var(--output-bg);
+}
+
+/* === Main 3 Language Buttons === */
+.main-langs {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 0;
+}
+
+.main-lang-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.7rem 1.4rem;
+    border: 1.5px solid var(--btn-border);
+    border-radius: 12px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    min-width: 90px;
+}
+
+.main-lang-btn .flag {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.main-lang-btn .label {
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.main-lang-btn:hover {
+    background: var(--btn-hover-bg);
+    border-color: var(--btn-text);
+}
+
+.main-lang-btn.active {
+    background: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    border-color: var(--btn-active-bg);
+    box-shadow: 0 2px 12px var(--btn-active-shadow);
+}
+
+/* === Chatbot Panel (fixed to right margin) === */
+.chatbot-panel {
+    position: fixed;
+    top: 3rem;
+    right: 1.5rem;
+    width: 260px;
+    bottom: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    box-shadow:
+        0 1px 2px var(--card-shadow-1),
+        0 4px 12px var(--card-shadow-2);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s, border-color 0.3s;
+    z-index: 100;
+}
+
+.chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.1rem;
+    border-bottom: 1px solid var(--divider);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+
+.chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chat-msg {
+    padding: 0.6rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    max-width: 88%;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.chat-msg.bot {
+    background: var(--btn-bg);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-msg.user {
+    background: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-msg.chat-actions {
+    display: flex;
+    gap: 0.4rem;
+    background: transparent;
+    padding: 0.2rem 0;
+}
+
+.chat-action-btn {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--btn-border);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--action-text);
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.chat-action-btn:hover {
+    background: var(--btn-hover-bg);
+    border-color: var(--action-hover-border);
+    color: var(--text-primary);
+}
+
+.chatbot-input-wrap {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.7rem;
+    border-top: 1px solid var(--divider);
+}
+
+.chatbot-input {
+    flex: 1;
+    padding: 0.5rem 0.8rem;
+    border: 1.5px solid var(--input-border);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.chatbot-input:focus {
+    border-color: var(--input-focus);
+}
+.chatbot-input::placeholder {
+    color: var(--hint-text);
+}
+
+.chatbot-send {
+    padding: 0.5rem 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--btn-active-bg);
+    color: var(--btn-active-text);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+.chatbot-send:hover {
+    opacity: 0.85;
+}
+
+/* === Action Buttons === */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-top: 0.25rem;
+}
+
+.action-btn {
+    padding: 0.45rem 0.9rem;
+    border: 1.5px solid var(--action-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--action-text);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.action-btn:hover {
+    background: var(--action-hover-bg);
+    color: var(--text-primary);
+    border-color: var(--action-hover-border);
+}
+
+.action-btn:active {
+    transform: scale(0.97);
+}
+
+.spacer {
+    flex: 1;
+}
+
+.theme-btn {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--action-border);
+    border-radius: 8px;
+    background: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    color: var(--text-secondary);
+}
+
+.theme-btn:hover {
+    background: var(--action-hover-bg);
+}
+
+/* === Language Override Badge (chatbot → converter sync) === */
+.lang-override-badge {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    margin: -0.5rem auto 1rem;
+    background: var(--btn-active-bg);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    animation: badge-in 0.3s ease;
+}
+
+.lang-override-badge.show {
+    display: flex;
+}
+
+.badge-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 0.3rem;
+    padding: 0 0.2rem;
+}
+.badge-close:hover {
+    color: #fff;
+}
+
+@keyframes badge-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card glow when chatbot language is active */
+.card.chatbot-active {
+    border-color: var(--btn-active-bg);
+    box-shadow:
+        0 1px 2px var(--card-shadow-1),
+        0 8px 24px var(--card-shadow-2),
+        0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+/* === Hints === */
+.hints {
+    font-size: 0.75rem;
+    color: var(--hint-text);
+    line-height: 1.6;
+}
+
+.hints p {
+    margin-bottom: 0.15rem;
+}
+
+.hint-chinese {
+    display: none;
+    color: #D97706;
+    font-weight: 500;
+}
+
+/* === Toast === */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--toast-bg);
+    color: var(--toast-text);
+    padding: 0.65rem 1.4rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* === Responsive === */
+
+/* Wide: chatbot visible in right margin */
+@media (min-width: 1100px) {
+    body {
+        align-items: center;
+    }
+}
+
+/* Not wide enough for chatbot */
+@media (max-width: 1099px) {
+    .chatbot-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 620px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    .card {
+        border-radius: 14px;
+        padding: 1.5rem 1rem;
+    }
+
+    .header h1 {
+        font-size: 1.3rem;
+    }
+
+    .main-lang-btn {
+        padding: 0.6rem 1rem;
+        min-width: 80px;
+    }
+
+    .main-lang-btn .flag {
+        font-size: 1.3rem;
+    }
+
+    textarea {
+        min-height: 85px;
+        font-size: 0.95rem;
+    }
+}
