@@ -22,6 +22,76 @@
 
     <link rel="canonical" href="https://hanbon.vercel.app/">
 
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "외국어 TTS 변환기",
+      "alternateName": "Hanbon",
+      "url": "https://hanbon.vercel.app/",
+      "description": "한국어를 일본어, 중국어, 영어, 독일어 등 12개 언어의 발음으로 변환하고 음성으로 들어보세요. 스트리머 도네이션 TTS 미리듣기에도 적합한 무료 온라인 도구입니다.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern browser with JavaScript enabled",
+      "inLanguage": "ko",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      },
+      "featureList": [
+        "한국어 → 일본어 가나 변환",
+        "한국어 → 중국어 한자 변환",
+        "한국어 → 영어 로마자 변환",
+        "독일어·프랑스어·스페인어·이탈리아어 등 12개 언어 지원",
+        "여성 음성 TTS 듣기",
+        "다크 모드"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "한국어를 어떻게 외국어 발음으로 변환하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "한글 음절을 초성·중성·종성으로 분해한 뒤, 언어별 발음 매핑 테이블을 통해 각 언어의 문자로 변환합니다. 예를 들어 '안녕하세요'는 일본어로 'あんにょんはせよ'로 변환됩니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "어떤 언어를 지원하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "일본어, 중국어, 영어, 독일어, 프랑스어, 스페인어, 이탈리아어, 러시아어, 포르투갈어, 태국어, 터키어, 그리스어 총 12개 언어를 지원합니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "음성 듣기가 작동하지 않으면 어떻게 하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "브라우저에 해당 언어 TTS 음성팩이 설치돼 있어야 합니다. Windows의 경우 '설정 → 시간 및 언어 → 음성'에서 언어 음성팩을 추가할 수 있으며, 없을 경우 구글 번역에서 들어볼 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "스트리머 도네이션 TTS 미리듣기로 쓸 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 한국어 메시지가 특정 외국어로 읽힐 때 어떻게 들릴지 미리 확인할 수 있어 트위치·유튜브·아프리카 도네이션 TTS 테스트에 적합합니다."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-9619876871892528">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9619876871892528"
@@ -90,6 +160,61 @@
     </div>
 
     <div class="toast" id="toast"></div>
+
+    <!-- SEO Content: usage guide, examples, FAQ (boosts AdSense approval odds) -->
+    <section class="seo-content">
+        <article class="seo-block">
+            <h2>한국어 발음 외국어 변환기란?</h2>
+            <p>
+                이 도구는 한국어 문장을 12개 외국어의 발음 표기로 변환합니다. 한글 음절을 초성·중성·종성으로 분해한 뒤
+                각 언어에 맞는 문자 체계로 재조합하여, 일본어 가나, 중국어 한자, 영어 로마자, 러시아어 키릴 문자,
+                태국어 태국 문자 등으로 보여줍니다. 스트리머 도네이션 TTS 미리듣기, 외국어 공부, 이름 표기 등에
+                자유롭게 사용하실 수 있습니다.
+            </p>
+        </article>
+
+        <article class="seo-block">
+            <h2>지원 언어와 변환 예시</h2>
+            <ul class="lang-examples">
+                <li><strong>일본어</strong> (가나): 안녕하세요 → あんにょんはせよ</li>
+                <li><strong>중국어</strong> (한자): 심시매 → 心思妹</li>
+                <li><strong>영어</strong> (로마자): 반가워요 → bangaweoyo</li>
+                <li><strong>독일어</strong>: 안녕 → An-nyeong</li>
+                <li><strong>프랑스어</strong>: 사랑해 → Sarang-hae</li>
+                <li><strong>러시아어</strong> (키릴): 감사합니다 → Камсахамнида</li>
+                <li><strong>태국어</strong>: 안녕 → อันนยอง</li>
+                <li><strong>기타</strong>: 스페인어, 이탈리아어, 포르투갈어, 터키어, 그리스어 모두 지원</li>
+            </ul>
+        </article>
+
+        <article class="seo-block">
+            <h2>사용 방법</h2>
+            <ol class="usage-steps">
+                <li>상단 입력창에 한국어 문장을 입력합니다.</li>
+                <li>원하는 언어(일본어·중국어·영어)를 클릭하면 즉시 변환됩니다.</li>
+                <li>오른쪽 챗봇에서 "독일어", "프랑스어" 등을 입력해 더 많은 언어를 사용할 수 있습니다.</li>
+                <li>🔊 듣기 버튼으로 해당 언어 발음을 여성 음성으로 재생합니다.</li>
+                <li>📋 복사 버튼으로 결과를 클립보드에 복사할 수 있습니다.</li>
+            </ol>
+        </article>
+
+        <article class="seo-block">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <dl class="faq">
+                <dt>Q. 음성이 이상하게 들려요.</dt>
+                <dd>A. 브라우저/OS에 해당 언어의 TTS 음성팩이 설치돼 있지 않을 수 있습니다. Windows는 "설정 → 시간 및 언어 → 음성"에서 음성팩을 추가하거나, 구글 번역에서 들어볼 수 있습니다.</dd>
+
+                <dt>Q. 중국어 결과가 이상해요.</dt>
+                <dd>A. 중국어는 소리나는 대로 입력해야 잘 나옵니다. 예) "심심해" → "심시매".</dd>
+
+                <dt>Q. 개인정보가 서버로 전송되나요?</dt>
+                <dd>A. 아니요. 이 도구는 순수 프론트엔드이며 입력한 문장은 서버로 전송되지 않고 브라우저 안에서만 처리됩니다.</dd>
+
+                <dt>Q. 모바일에서도 사용할 수 있나요?</dt>
+                <dd>A. 네, 반응형 디자인이며 주요 3개 언어(일본어·중국어·영어) 변환은 모바일에서도 바로 사용할 수 있습니다.</dd>
+            </dl>
+        </article>
+    </section>
 
     <!-- Kakao AdFit 300x250 Banner -->
     <div class="ad-container">
