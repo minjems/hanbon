@@ -144,9 +144,26 @@ function updateThemeIcon(theme) {
     btn.title = theme === 'dark' ? '라이트 모드' : '다크 모드';
 }
 
-// TTS - female voice only
+// TTS - select female voice by name
+const FEMALE_VOICE_NAMES = [
+    'haruka','sayaka','ayumi','mizuki',   // Japanese female
+    'zira','salli','joanna','ivy',        // English female
+    'huihui','yaoyao','zhiyu',            // Chinese female
+    'hedda','vicki','marlene',            // German female
+    'elsa','carla','bianca',              // Italian female
+    'helena','conchita','lucia',          // Spanish female
+    'hortense','celine',                  // French female
+    'tatyana','irina',                    // Russian female
+    'maria','vitoria',                    // Portuguese female
+    'pattara',                            // Thai female
+    'filiz',                              // Turkish female
+    'stefanos',                           // Greek (no female, skip)
+    'heami',                              // Korean female
+    'google',                             // Google voices (usually female)
+];
+
 function speakFemale(text, langCode) {
-    if (typeof SpeechSynthesisUtterance === 'undefined' || !window.speechSynthesis) {
+    if (!window.speechSynthesis) {
         showToast('이 브라우저는 TTS를 지원하지 않습니다');
         return;
     }
@@ -156,29 +173,15 @@ function speakFemale(text, langCode) {
     utterance.rate = 1;
     utterance.pitch = 1;
 
-    // Find female voice for this language
     const voices = window.speechSynthesis.getVoices();
     const langPrefix = langCode.split('-')[0];
-    const femaleVoice = voices.find(v =>
-        v.lang.startsWith(langPrefix) &&
-        (v.name.toLowerCase().includes('female') ||
-         v.name.toLowerCase().includes('woman') ||
-         v.name.includes('Haruka') || v.name.includes('Sayaka') ||  // Japanese female
-         v.name.includes('Huihui') || v.name.includes('Yaoyao') ||  // Chinese female
-         v.name.includes('Zira') ||   // English female
-         v.name.includes('Hedda') ||  // German female
-         v.name.includes('Elsa') ||   // Italian female
-         v.name.includes('Helena') || // Spanish female
-         v.name.includes('Hortense') || // French female
-         v.name.includes('Irina') ||  // Russian female
-         v.name.includes('Pattara') || // Thai female
-         v.name.includes('Maria') ||  // Portuguese female
-         v.name.includes('Google') && !v.name.toLowerCase().includes('male'))
-    );
+    const langVoices = voices.filter(v => v.lang.toLowerCase().startsWith(langPrefix));
 
-    if (femaleVoice) {
-        utterance.voice = femaleVoice;
-    }
+    // Pick female voice
+    const female = langVoices.find(v =>
+        FEMALE_VOICE_NAMES.some(n => v.name.toLowerCase().includes(n))
+    );
+    if (female) utterance.voice = female;
 
     window.speechSynthesis.speak(utterance);
 }
